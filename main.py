@@ -4,6 +4,7 @@ from random import choice, randint, shuffle
 import pyperclip
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+
 def generate_passwd():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -22,6 +23,7 @@ def generate_passwd():
     pyperclip.copy(password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+
 def save():
     user_website = website_input.get()
     user_email_username = email_username_input.get()
@@ -72,6 +74,7 @@ website_input.grid(column=1,row=1, columnspan=2)
 email_username_input = Entry()
 email_username_input.config(width=42, highlightthickness=0)
 email_username_input.grid(column=1,row=2, columnspan=2)
+email_username_input.insert(0, "user@email.com")
 
 password_field = Entry()
 password_field.config(width=33, highlightthickness=0)
