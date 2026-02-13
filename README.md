@@ -61,6 +61,6 @@ python main.py
 
 ---
 
-*Developed by [abatima](https://github.com/abatima)
+Developed by [abatima](https://github.com/abatima)
 
 ```
