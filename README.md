@@ -1,5 +1,8 @@
 # 🔐 Password Manager
 
+## <img width="455" height="426" alt="image" src="https://github.com/user-attachments/assets/c1ef1dee-463b-413f-bd9a-ec1bfcfa4940" />
+
+
 A robust desktop application designed to generate, manage, and store account credentials locally. This project focuses on UI layout precision using the Tkinter grid system and implements cross-platform clipboard integration for a seamless user experience.
 
 ## 🕹️ How It Works
@@ -32,7 +35,7 @@ The application serves as a centralized hub for managing digital credentials:
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/abatima/password-manager.git](https://github.com/abatima/password-manager.git)
+   git clone https://github.com/abatima/password-manager.git
 
 ```
 
@@ -58,6 +61,6 @@ python main.py
 
 ---
 
-*Developed by [abatima*](https://github.com/abatima)
+*Developed by [abatima](https://github.com/abatima)
 
 ```
