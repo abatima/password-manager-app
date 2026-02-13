@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
+import pyperclip
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_passwd():
@@ -18,6 +19,7 @@ def generate_passwd():
 
     password = "".join(password_list)
     password_field.insert(0, password)
+    pyperclip.copy(password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
@@ -38,6 +40,7 @@ def save():
         if is_ok:
             with open("passwords.txt", "a") as passwords_file:
                 passwords_file.write(f"{user_website} | {user_email_username} | {user_password}\n")
+                messagebox.showinfo(title="Password saved!", message="Your new password was copied to clipboard as well!")
 
     website_input.delete(0, END)
     password_field.delete(0, END)
