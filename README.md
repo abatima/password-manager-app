@@ -1,45 +1,42 @@
 # 🔐 Password Manager
 
-## <img width="455" height="426" alt="image" src="https://github.com/user-attachments/assets/c1ef1dee-463b-413f-bd9a-ec1bfcfa4940" />
-
-
-A robust desktop application designed to generate, manage, and store account credentials locally. This project focuses on UI layout precision using the Tkinter grid system and implements cross-platform clipboard integration for a seamless user experience.
+A desktop security utility designed to generate, store, and retrieve account credentials. This version upgrades the storage engine to **JSON**, enabling structured data management and an efficient search feature for localized credential lookups.
 
 ## 🕹️ How It Works
-The application serves as a centralized hub for managing digital credentials:
-* **Credential Entry**: Users input website names and usernames/emails into a structured form.
-* **Password Generation**: A specialized algorithm creates randomized, high-entropy strings.
-* **Validation & Confirmation**: The system validates inputs to ensure no empty fields are saved and provides a verification popup before final storage.
-* **Local Storage**: Data is appended to a local `passwords.txt` file for persistent access.
+The application manages a digital vault using a dictionary-style data structure:
+* **Credential Entry**: Securely input website, email, and password details.
+* **Smart Generation**: Create high-entropy passwords that are automatically copied to the clipboard.
+* **Persistent Storage**: Saves data in a structured `passwords.json` format, allowing for better data integrity.
+* **Instant Search**: Look up any previously saved website to retrieve associated emails and passwords via a dedicated interface.
 
 ## ✨ Key Features
-* **Automated Password Engine**: Generates secure passwords by shuffling a randomized mix of letters, numbers, and symbols.
-* **Integrated Clipboard Support**: Utilizes the `pyperclip` library to automatically copy generated passwords to the user's clipboard for immediate use.
-* **Grid-Based UI Design**: Implements a clean, multi-column layout with fixed-width entry fields and column-spanning buttons for a professional aesthetic.
-* **Input Validation**: Features multiline conditional logic to prevent the storage of incomplete or empty data entries.
-* **Event-Driven Popups**: Uses the `messagebox` module to provide real-time feedback and user confirmations.
+* **JSON Data Management**: Implements the `json` library to read, update, and write user data, replacing standard flat-file storage for better scalability.
+* **Error-Resistant Logic**: Uses `try-except-else` blocks to handle missing files or non-existent entries gracefully without crashing the UI.
+* **Integrated Search Engine**: A dedicated search algorithm that fetches data by key (Website name) and displays it via interactive popups.
+* **Automatic Clipboard Integration**: Leverages `pyperclip` to ensure generated passwords are ready for immediate use.
+* **Enhanced UI Layout**: A refined Tkinter grid system with `columnspan` and `sticky` attributes to ensure a tight, professional user interface.
 
 ## 🛠️ Tech Stack
 * **Language**: Python 3.x
-* **Library**: Tkinter (Standard GUI Library)
-* **Packages**: `pyperclip` (Clipboard management)
-* **Logic**: Procedural event handling and file I/O operations.
+* **GUI Framework**: Tkinter
+* **Data Format**: JSON (JavaScript Object Notation)
+* **Packages**: `pyperclip`, `json`, `random`
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 * Python 3.x
 * `pyperclip` package: `pip install pyperclip`
-* `logo.png` asset file in the project directory.
+* `logo.png` image asset.
 
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/abatima/password-manager.git
+   git clone [https://github.com/abatima/password-manager.git](https://github.com/abatima/password-manager.git)
 
 ```
 
-2. Navigate to the directory:
+2. Navigate to the project folder:
 ```bash
 cd password-manager
 
@@ -56,11 +53,12 @@ python main.py
 
 ## 🎮 Controls
 
-* **Generate Button**: Creates a new secure password and copies it to the clipboard.
-* **Add Button**: Validates inputs, asks for confirmation, and saves the credentials to `passwords.txt`.
+* **Search**: Retrieves and displays saved details for a specific website.
+* **Generate**: Creates a randomized password and copies it to the clipboard.
+* **Add**: Validates input and updates the `passwords.json` vault.
 
 ---
 
-Developed by [abatima](https://github.com/abatima)
+*Developed by [abatima](https://github.com/abatima)
 
 ```
