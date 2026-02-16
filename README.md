@@ -1,5 +1,8 @@
 # 🔐 Password Manager
 
+## <img width="454" height="428" alt="image" src="https://github.com/user-attachments/assets/baf7d1f0-0d13-41e1-9dea-47070e003110" />
+
+
 A desktop security utility designed to generate, store, and retrieve account credentials. This version upgrades the storage engine to **JSON**, enabling structured data management and an efficient search feature for localized credential lookups.
 
 ## 🕹️ How It Works
