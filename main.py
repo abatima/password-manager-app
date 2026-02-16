@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
 import pyperclip
+import json
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
@@ -28,6 +29,12 @@ def save():
     user_website = website_input.get()
     user_email_username = email_username_input.get()
     user_password = password_field.get()
+    new_data = {
+        user_website: {
+            "email": user_email_username,
+            "password": user_password,
+        }
+    }
 
     if (len(user_website) == 0 or
         len(user_email_username) == 0 or
@@ -40,11 +47,21 @@ def save():
                                                        f"\nPassword: {user_password}")
 
         if is_ok:
-            with open("passwords.txt", "a") as passwords_file:
-                passwords_file.write(f"{user_website} | {user_email_username} | {user_password}\n")
-                messagebox.showinfo(title="Password saved!", message="Your new password was copied to clipboard as well!")
-                website_input.delete(0, END)
-                password_field.delete(0, END)
+            try:
+                with open("passwords.json", "r") as passwords_file:
+                    data = json.load(passwords_file)
+                    data.update(new_data)
+                with open("passwords.json", "w") as passwords_file:
+                    json.dump(data, passwords_file, indent=4)
+                    website_input.delete(0, END)
+                    password_field.delete(0, END)
+            except FileNotFoundError:
+                with open("passwords.json", "w") as passwords_file:
+                    json.dump(new_data, passwords_file, indent=4)
+                    messagebox.showinfo(title="Password saved!", message="Your new password was copied to clipboard as well!")
+                    website_input.delete(0, END)
+                    password_field.delete(0, END)
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 
