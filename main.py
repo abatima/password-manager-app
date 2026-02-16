@@ -22,6 +22,25 @@ def generate_passwd():
     password = "".join(password_list)
     password_field.insert(0, password)
     pyperclip.copy(password)
+# ---------------------------- SEARCH PASSWORD ------------------------------- #
+
+def find_password():
+    user_website = website_input.get()
+    try:
+        with open("passwords.json", "r") as passwords_file:
+            data = json.load(passwords_file)
+    except FileNotFoundError:
+        messagebox.showerror(title="Oops!", message=f"No password file is present!")
+
+    else:
+            if user_website in data:
+                messagebox.showinfo(title=user_website, message=(f"\nEmail: {data[user_website]["email"]}"
+                                                                f"\nPassword: {data[user_website]["password"]}"))
+            else:
+                messagebox.showerror(title="Oops!", message=f"Password not found!")
+
+
+
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
@@ -53,7 +72,7 @@ def save():
             except FileNotFoundError:
                 with open("passwords.json", "w") as passwords_file:
                     json.dump(new_data, passwords_file, indent=4)
-                    messagebox.showinfo(title="Password saved!", message="Your new password was copied to clipboard as well!")
+                    messagebox.showinfo(title="Success!", message="Password saved!\nYour new password was copied to clipboard as well!")
             else:
                 data.update(new_data)
                 with open("passwords.json", "w") as passwords_file:
@@ -85,23 +104,27 @@ passwd_label.grid(column=0,row=3)
 
 website_input = Entry()
 website_input.focus()
-website_input.config(width=42, highlightthickness=0)
-website_input.grid(column=1,row=1, columnspan=2)
+website_input.config(width=34, highlightthickness=0)
+website_input.grid(column=1,row=1, columnspan=2, sticky="w")
 
 email_username_input = Entry()
 email_username_input.config(width=42, highlightthickness=0)
-email_username_input.grid(column=1,row=2, columnspan=2)
+email_username_input.grid(column=1,row=2, columnspan=2, sticky="w")
 email_username_input.insert(0, "user@email.com")
 
 password_field = Entry()
 password_field.config(width=33, highlightthickness=0)
-password_field.grid(column=1,row=3)
+password_field.grid(column=1,row=3, sticky="w")
 
 generate_password_button = Button(text="Generate", command=generate_passwd, highlightthickness=0)
 generate_password_button.grid(column=2,row=3)
 
 add_button = Button(text="Add", command=save, highlightthickness=0)
 add_button.config(width=36)
-add_button.grid(column=1,row=4, columnspan=2)
+add_button.grid(column=1,row=4, columnspan=2, sticky="w")
+
+search_button = Button(text="Search", command=find_password, highlightthickness=0)
+search_button.config(width=6)
+search_button.grid(column=2,row=1, sticky="e")
 
 window.mainloop()
