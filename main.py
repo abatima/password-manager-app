@@ -50,17 +50,17 @@ def save():
             try:
                 with open("passwords.json", "r") as passwords_file:
                     data = json.load(passwords_file)
-                    data.update(new_data)
-                with open("passwords.json", "w") as passwords_file:
-                    json.dump(data, passwords_file, indent=4)
-                    website_input.delete(0, END)
-                    password_field.delete(0, END)
             except FileNotFoundError:
                 with open("passwords.json", "w") as passwords_file:
                     json.dump(new_data, passwords_file, indent=4)
                     messagebox.showinfo(title="Password saved!", message="Your new password was copied to clipboard as well!")
-                    website_input.delete(0, END)
-                    password_field.delete(0, END)
+            else:
+                data.update(new_data)
+                with open("passwords.json", "w") as passwords_file:
+                    json.dump(data, passwords_file, indent=4)
+            finally:
+                website_input.delete(0, END)
+                password_field.delete(0, END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
